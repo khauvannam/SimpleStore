@@ -1,0 +1,16 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:latest
+    container_name: sqlserver_container
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Nam09189921
+      - MSSQL_PID=Developer
+    ports:
+      - "1583:1433" # Map host port 1583 to container port 1433
+    restart: always
+    volumes:
+      - store_sql_data:/var/opt/mssql
+
+volumes:
+  store_sql_data:
